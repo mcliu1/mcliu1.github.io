@@ -59,12 +59,33 @@
 
         // Stop the recognition in 5 seconds.
         // setTimeout(() => recognizer.stopListening(), 5000);
+
+    }
+
+    function notification() {
+        if (!('Notification' in window)) {
+          console.log('This browser does not support notification');
+        }
+
+        var notifyConfig = {
+            body: '\\ ^o^ /', // 設定內容
+            icon: '/images/favicon.ico', // 設定 icon
+        };
+
+        if (Notification.permission === 'default' || Notification.permission === 'undefined') {
+              Notification.requestPermission(function(permission) {
+                  if (permission === 'granted') {
+                    // 使用者同意授權
+                  var notification = new Notification('Hi there!', notifyConfig); // 建立通知
+                  }
+              });
+        }
     }
 </script>
 
-    
-    
-    
+
+
+
 </body>
 
 </head>
