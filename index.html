@@ -84,6 +84,10 @@
                 const classPrediction = classLabels[i] + ": " + result.scores[i].toFixed(2);
                 labelContainer.childNodes[i].innerHTML = classPrediction;
             }
+            if (result.scores[0]>=0.9) {
+                nofifyMe();
+            }
+
         }, {
             includeSpectrogram: true, // in case listen should return result.spectrogram
             probabilityThreshold: 0.75,
