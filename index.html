@@ -40,7 +40,7 @@
             labelContainer.appendChild(document.createElement("div"));
         }
 
-        notification();
+        showNotification();
 
         // listen() takes two arguments:
         // 1. A callback function that is invoked anytime a word is recognized.
@@ -66,7 +66,7 @@
 
     }
 
-    function notification() {
+    function showNotification() {
         if (!('Notification' in window)) {
           console.log('This browser does not support notification');
         }
@@ -75,6 +75,10 @@
             body: '\\ ^o^ /', // 設定內容
             icon: '/images/fav.ico', // 設定 icon
         };
+
+        if (permission === 'granted') {
+            var notification = new Notification('Hi there!', notifyConfig); // 建立通知
+        }
 
         if (Notification.permission === 'default' || Notification.permission === 'undefined') {
               Notification.requestPermission(function(permission) {
