@@ -39,9 +39,9 @@
         for (let i = 0; i < classLabels.length; i++) {
             labelContainer.appendChild(document.createElement("div"));
         }
-        
+
         notification();
-        
+
         // listen() takes two arguments:
         // 1. A callback function that is invoked anytime a word is recognized.
         // 2. A configuration object with adjustable fields
@@ -61,8 +61,8 @@
 
         // Stop the recognition in 5 seconds.
         // setTimeout(() => recognizer.stopListening(), 5000);
-        
-        
+
+
 
     }
 
@@ -73,7 +73,7 @@
 
         var notifyConfig = {
             body: '\\ ^o^ /', // 設定內容
-            icon: '/images/favicon.ico', // 設定 icon
+            icon: '/images/fav.ico', // 設定 icon
         };
 
         if (Notification.permission === 'default' || Notification.permission === 'undefined') {
