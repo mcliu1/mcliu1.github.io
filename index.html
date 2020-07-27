@@ -75,11 +75,16 @@
           console.log("This browser does not support notification");
         }
 
+        console.log("#");
+
         if (Notification.permission  === "granted") {
+            console.log("##");
             const notification = new Notification("New Message", {body: "this is body"}); // 建立通知
+
         }
 
         if (Notification.permission === "default" || Notification.permission === "undefined") {
+            console.log("###");
               Notification.requestPermission(function(permission) {
                   if (permission === "granted") {
                     // 使用者同意授權
