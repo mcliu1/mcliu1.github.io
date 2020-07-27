@@ -85,7 +85,7 @@
                 labelContainer.childNodes[i].innerHTML = classPrediction;
             }
             if (result.scores[0]>=0.9) {
-                nofifyMe();
+                var notification = new Notification("Hi there!");
             }
 
         }, {
