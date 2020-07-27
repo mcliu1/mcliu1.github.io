@@ -76,7 +76,7 @@
             icon: '/images/fav.ico', // 設定 icon
         };
 
-        if (permission === 'granted') {
+        if (Notification.permission  === 'granted') {
             var notification = new Notification('Hi there!', notifyConfig); // 建立通知
         }
 
