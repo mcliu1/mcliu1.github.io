@@ -33,8 +33,11 @@
     }
 
     async function init() {
+<<<<<<< HEAD
         showNotification();
 
+=======
+>>>>>>> parent of 36dd80f... Update index.html
         const recognizer = await createModel();
         const classLabels = recognizer.wordLabels(); // get class labels
         const labelContainer = document.getElementById("label-container");
@@ -42,7 +45,7 @@
             labelContainer.appendChild(document.createElement("div"));
         }
 
-
+        showNotification();
 
         // listen() takes two arguments:
         // 1. A callback function that is invoked anytime a word is recognized.
@@ -69,6 +72,7 @@
     }
 
     function showNotification() {
+<<<<<<< HEAD
         console.log(Notification.permission);
         if (Notification.permission === "granted") {
            alert("we have permission");
@@ -76,6 +80,23 @@
            Notification.requestPermission().then(permission => {
               console.log(permission);
            });
+=======
+        if (!("Notification" in window)) {
+          console.log("This browser does not support notification");
+        }
+
+        if (Notification.permission  === "granted") {
+            const notification = new Notification("New Message", {body: "this is body"}); // 建立通知
+        }
+
+        if (Notification.permission === "default" || Notification.permission === "undefined") {
+              Notification.requestPermission(function(permission) {
+                  if (permission === "granted") {
+                    // 使用者同意授權
+                  const notification = new Notification("New message", {body: "this is body 2"}); // 建立通知
+                  }
+              });
+>>>>>>> parent of 36dd80f... Update index.html
         }
     }
 </script>
