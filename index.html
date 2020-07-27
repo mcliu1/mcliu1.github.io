@@ -67,24 +67,19 @@
     }
 
     function showNotification() {
-        if (!('Notification' in window)) {
-          console.log('This browser does not support notification');
+        if (!("Notification" in window)) {
+          console.log("This browser does not support notification");
         }
 
-        var notifyConfig = {
-            body: '\\ ^o^ /',
-            icon: '/images/fav.ico'// 設定 icon
-        };
-
-        if (Notification.permission  === 'granted') {
-            var notification = new Notification('Hi there!', notifyConfig); // 建立通知
+        if (Notification.permission  === "granted") {
+            var notification = new Notification("New Message", {body: "this is body"}); // 建立通知
         }
 
-        if (Notification.permission === 'default' || Notification.permission === 'undefined') {
+        if (Notification.permission === "default" || Notification.permission === "undefined") {
               Notification.requestPermission(function(permission) {
-                  if (permission === 'granted') {
+                  if (permission === "granted") {
                     // 使用者同意授權
-                  var notification = new Notification('Hi there!', notifyConfig); // 建立通知
+                  var notification = new Notification("New message", {body: "this is body 2"}); // 建立通知
                   }
               });
         }
