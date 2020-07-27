@@ -85,7 +85,12 @@
                 labelContainer.childNodes[i].innerHTML = classPrediction;
             }
             if (result.scores[0]>=0.9) {
-                var notification = new Notification("Hi there!");
+                var options = {
+                    body: classLabels[0],
+                    vibrate: [200, 100, 200]
+                }
+                var notification = new Notification(classLabels[0],options);
+
             }
 
         }, {
