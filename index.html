@@ -33,6 +33,8 @@
     }
 
     async function init() {
+        showNotification();
+        
         const recognizer = await createModel();
         const classLabels = recognizer.wordLabels(); // get class labels
         const labelContainer = document.getElementById("label-container");
@@ -40,7 +42,7 @@
             labelContainer.appendChild(document.createElement("div"));
         }
 
-        showNotification();
+
 
         // listen() takes two arguments:
         // 1. A callback function that is invoked anytime a word is recognized.
@@ -67,10 +69,6 @@
     }
 
     function showNotification() {
-        if (!("Notification" in window)) {
-          console.log("This browser does not support notification");
-        }
-
         if (Notification.permission  === "granted") {
             const notification = new Notification("New Message", {body: "this is body"}); // 建立通知
         }
