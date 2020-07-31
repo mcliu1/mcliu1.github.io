@@ -28,21 +28,6 @@
       Notification.requestPermission();
     });
 
-
-    function notifyMe() {
-     if (Notification.permission !== 'granted')
-      Notification.requestPermission();
-     else {
-      var notification = new Notification('Notification title', {
-       icon: 'https://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png',
-       body: 'Hey there! You\'ve been notified!',
-      });
-      notification.onclick = function() {
-       window.open('http://stackoverflow.com/a/13328397/1269037');
-      };
-     }
-    }
-
     async function createModel() {
         const checkpointURL = URL + "model.json"; // model topology
         const metadataURL = URL + "metadata.json"; // model metadata
