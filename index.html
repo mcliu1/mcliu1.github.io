@@ -105,10 +105,14 @@
     alert("This browser does not support desktop notification");
   }
 
+  var options = {   icon: 'http://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png',
+                    body: 'Hey there! You\'ve been notified!',
+                };
+
   // Let's check whether notification permissions have already been granted
   else if (Notification.permission === "granted") {
     // If it's okay let's create a notification
-    var notification = new Notification("Notify Button is pressed.");
+    var notification = new Notification("Notify Button is pressed.",options);
     window.navigator.vibrate([200,30,100,30,200,30,100]);
   }
 
@@ -117,7 +121,7 @@
     Notification.requestPermission().then(function (permission) {
       // If the user accepts, let's create a notification
       if (permission === "granted") {
-        var notification = new Notification("Notify Button is pressed.");
+        var notification = new Notification("Notify Button is pressed."options);
         window.navigator.vibrate(200);
       }
     });
@@ -130,7 +134,7 @@
 }
 </script>
 
-<p>version = 0.1.6</p>
+<p>version = 0.1.7</p>
 
 </body>
 
