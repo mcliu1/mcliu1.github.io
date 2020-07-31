@@ -96,7 +96,7 @@
 </script>
 
 
-<button onclick="notifyMe()">Notify me!</button>
+<button id="btnNotifyMe" onclick="notifyMe()">Notify me!</button>
 
 <script type="text/javascript">
     function notifyMe() {
@@ -122,6 +122,8 @@
       }
     });
   }
+
+  btnNotifyMe.active = "on";
 
   // At last, if the user has denied notifications, and you
   // want to be respectful there is no need to bother them any more.
