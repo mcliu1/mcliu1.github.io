@@ -109,7 +109,7 @@
   else if (Notification.permission === "granted") {
     // If it's okay let's create a notification
     var notification = new Notification("Notify Button is pressed.");
-    window.navigator.vibrate(200);
+    window.navigator.vibrate([200,30,100,30,200,30,100]);
   }
 
   // Otherwise, we need to ask the user for permission
