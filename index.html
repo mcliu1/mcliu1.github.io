@@ -99,15 +99,17 @@
 <button id="btnNotifyMe" onclick="notifyMe()">Notify me!</button>
 
 <script type="text/javascript">
-    function notifyMe() {
+function notifyMe() {
+
+  var options = {   icon: 'http://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png',
+                      body: 'Hey there! You\'ve been notified!',
+                  };
   // Let's check if the browser supports notifications
   if (!("Notification" in window)) {
     alert("This browser does not support desktop notification");
   }
 
-  var options = {   icon: 'http://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png',
-                    body: 'Hey there! You\'ve been notified!',
-                };
+
 
   // Let's check whether notification permissions have already been granted
   else if (Notification.permission === "granted") {
