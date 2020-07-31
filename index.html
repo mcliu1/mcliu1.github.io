@@ -93,34 +93,6 @@
 
     }
 
-
-
-
-    // function showNotification() {
-    //
-    //     if (!("Notification" in window)) {
-    //       console.log("This browser does not support notification 1");
-    //     }
-    //
-    //     console.log("#");
-    //
-    //     if (Notification.permission  === "granted") {
-    //         console.log("##");
-    //         var notification = new Notification("New Message", {body: "this is body"}); // 建立通知
-    //         console.log("####");
-    //     }
-    //
-    //     if (Notification.permission === "default" || Notification.permission === "undefined") {
-    //         console.log("###");
-    //           Notification.requestPermission(function(permission) {
-    //               if (permission === "granted") {
-    //                 // 使用者同意授權
-    //                 var notification = new Notification("New message", {body: "this is body 2"}); // 建立通知
-    //               }
-    //           });
-    //
-    //     }
-    //}
 </script>
 
 
@@ -136,7 +108,7 @@
   // Let's check whether notification permissions have already been granted
   else if (Notification.permission === "granted") {
     // If it's okay let's create a notification
-    var notification = new Notification("Notify Button is pressed."");
+    var notification = new Notification("Notify Button is pressed.");
     window.navigator.vibrate(200);
   }
 
