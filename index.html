@@ -160,6 +160,7 @@
       // If the user accepts, let's create a notification
       if (permission === "granted") {
         var notification = new Notification("Hi there!");
+        window.navigator.vibrate(200);
       }
     });
   }
