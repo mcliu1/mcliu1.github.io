@@ -4,14 +4,23 @@
 <body>
 ntest<br>
 <script>
+  function NF() {
+    const notification = new Notification("New mesage from dcode!", {
+      body: "sdfsdfdsfsdf"
+    });
+  }
+
+
     console.log(Notification.permission);
 
     if (Notification.permission === "granted") {
-      alert("we have permission!");
+      //alert("we have permission!");
+      NF();
     }
     else if (Notification.permission !== "denied") {
       Notification.requestPermission().then(permission => {
-        console.log(permission);
+        //console.log(permission);
+        NF();
       })
     }
 </script>
