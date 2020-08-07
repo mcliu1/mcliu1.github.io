@@ -31,7 +31,7 @@ ntest<br>
 <button id="button" type="button">Start BLE</button>
 <script>
   button.addEventListener('pointerup', function(event) {
-    navigator.bluetooth.requestDevice({ filters: [{ services: ['Super_Skin'] }] })
+    navigator.bluetooth.requestDevice({ filters: [{ services: ['super_skin'] }] })
     .then(device => device.gatt.connect())
     .then(server => server.getPrimaryService('heart_rate'))
     .then(service => service.getCharacteristic('heart_rate_measurement'))
