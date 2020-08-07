@@ -17,8 +17,8 @@ body {
 <button type="button" onclick="test()"> Testing </button>
 
 <script>
-function NF(){
-  const notification = new Notification("This is an NF!!");
+function NF(c){
+  const notification = new Notification(c);
   window.navigator.vibrate([1000,200,1000]);
 }
 
@@ -91,7 +91,10 @@ function test() {
             }
 
             if (result.scores[0] >= 0.9) {
-              NF();
+              NF(classLabels[0]);
+            }
+            if (result.scores[1] >= 0.9) {
+              NF(classLabels[1]);
             }
 
 
