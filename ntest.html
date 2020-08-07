@@ -28,6 +28,15 @@ ntest<br>
     }
 </script>
 
+<button id="button" type="button" onclick="ble()">Start BLE</button>
+<script>
+  button.addEventListener('pointerup', function(event) {
+    // Call navigator.bluetooth.requestDevice
+    navigator.bluetooth.requestDevice({ filters: [{ services: ['Super Skin'] }] })
+    .then(device => { /* ... */ })
+    .catch(error => { console.log(error); });
+  });
+</script>
 
 </body>
 
