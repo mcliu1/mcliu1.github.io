@@ -5,6 +5,10 @@
 ntest<br>
 <script>
     console.log(Notification.permission);
+
+    if (Notification.permission === "granted") {
+      alert("we have permission!");
+    }
 </script>
 
 
