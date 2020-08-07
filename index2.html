@@ -1,7 +1,15 @@
 <html>
-<title> Mcliu's homepage </title>
 
-<body background-color: lightblue;>
+<head>
+<title> Mcliu's homepage </title>
+<style>
+body {
+  background-color: lightblue;
+}
+</style>
+</head>
+
+<body>
 <p style="font-family:verdana; color:red">mcliu1.github.io </p>
 <br>
 <br>
@@ -9,8 +17,26 @@
 <button type="button" onclick="test()"> Testing </button>
 
 <script>
+function NF(){
+  const notification = new Notification("This is an NF!!")
+}
+
 function test() {
-  alert("Hello, World!");
+
+  // granted, denied, default
+  console.log(Notification.permission);
+  if (Notification.permission === "granted") {
+    //alert("granted");
+    NF();
+  }
+  else if (Notification.permission !== "denied") {
+    Notification.requestPermission().then(permission => {
+      if (permission === "granted") {
+         //alert("granted");
+         NF();
+      }
+    })
+  }
 }
 </script>
 
