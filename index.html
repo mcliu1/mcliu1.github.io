@@ -1,7 +1,46 @@
-<head>
+<html>
 
-<title>DEAF</title>
+<head>
+<title> Mcliu's homepage </title>
+<style>
+body {
+  background-color: lightblue;
+}
+</style>
+</head>
+
 <body>
+<p style="font-family:verdana; color:red">mcliu1.github.io </p>
+<br>
+<br>
+
+<button type="button" onclick="test()"> Testing </button>
+
+<script>
+function NF(c){
+  const notification = new Notification(c);
+  window.navigator.vibrate([1000,200,1000]);
+}
+
+function test() {
+  // granted, denied, default
+  console.log(Notification.permission);
+  if (Notification.permisssion === "granted") {
+    //alert("granted");
+    NF();
+  }
+  else if (Notification.permission !== "denied") {
+    Notification.requestPermission().then(permission => {
+      if (permission === "granted") {
+         //alert("granted");
+         NF();
+      }
+    })
+  }
+}
+</script>
+
+
 
 <div>Teachable Machine Audio Model</div>
 <button type="button" onclick="init()">Start</button>
@@ -9,24 +48,12 @@
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/speech-commands@0.4.0/dist/speech-commands.min.js"></script>
 
-
 <script type="text/javascript">
     // more documentation available at
     // https://github.com/tensorflow/tfjs-models/tree/master/speech-commands
 
     // the link to your model provided by Teachable Machine export panel
-    const URL = "https://teachablemachine.withgoogle.com/models/i8P4-ytBC/";
-
-        // request permission on page load
-    document.addEventListener('DOMContentLoaded', function() {
-     if (!Notification) {
-      alert('Desktop notifications not available in your browser. Try Chromium.');
-      return;
-     }
-
-     if (Notification.permission !== 'granted')
-      Notification.requestPermission();
-    });
+    const URL = "https://teachablemachine.withgoogle.com/models/it5xA6f_d/";
 
     async function createModel() {
         const checkpointURL = URL + "model.json"; // model topology
@@ -45,19 +72,12 @@
     }
 
     async function init() {
-
-        //showNotification();
-
-        notifyMe();
-
         const recognizer = await createModel();
         const classLabels = recognizer.wordLabels(); // get class labels
         const labelContainer = document.getElementById("label-container");
         for (let i = 0; i < classLabels.length; i++) {
             labelContainer.appendChild(document.createElement("div"));
         }
-
-        //showNotification();
 
         // listen() takes two arguments:
         // 1. A callback function that is invoked anytime a word is recognized.
@@ -69,15 +89,17 @@
                 const classPrediction = classLabels[i] + ": " + result.scores[i].toFixed(2);
                 labelContainer.childNodes[i].innerHTML = classPrediction;
             }
-            if (result.scores[0]>=0.9) {
-                var options = {
-                    body: classLabels[0],
-                    vibrate: [200, 100, 200]
-                }
-                var notification = new Notification("Your destination is coming",options);
-                window.navigator.vibrate(200);
 
+            if (result.scores[0] >= 0.9) {
+              NF(classLabels[0]);
+              alert(classLabels[0]);
+              document.getElementById("1234").innerHTML = "<font color='blue'>就快到葵芳站啦</font>";
             }
+            if (result.scores[1] >= 0.9) {
+              NF(classLabels[1]);
+              alert(classLabels[1]);
+            }
+
 
         }, {
             includeSpectrogram: true, // in case listen should return result.spectrogram
@@ -88,56 +110,11 @@
 
         // Stop the recognition in 5 seconds.
         // setTimeout(() => recognizer.stopListening(), 5000);
-
-
-
     }
-
 </script>
 
-
-<button id="btnNotifyMe" onclick="notifyMe()">Notify me!</button>
-
-<script type="text/javascript">
-function notifyMe() {
-
-  var options = {   icon: 'http://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png',
-                      body: 'Hey there! You\'ve been notified!',
-                  };
-  // Let's check if the browser supports notifications
-  if (!("Notification" in window)) {
-    alert("This browser does not support desktop notification");
-  }
-
-
-
-  // Let's check whether notification permissions have already been granted
-  else if (Notification.permission === "granted") {
-    // If it's okay let's create a notification
-    var notification = new Notification("Notify Button is pressed.",options);
-    window.navigator.vibrate([200,30,100,30,200,30,100]);
-  }
-
-  // Otherwise, we need to ask the user for permission
-  else if (Notification.permission !== "denied") {
-    Notification.requestPermission().then(function (permission) {
-      // If the user accepts, let's create a notification
-      if (permission === "granted") {
-        var notification = new Notification("Notify Button is pressed.",options);
-        window.navigator.vibrate(200);
-      }
-    });
-  }
-
- // btnNotifyMe.active = "on";
-
-  // At last, if the user has denied notifications, and you
-  // want to be respectful there is no need to bother them any more.
-}
-</script>
-
-<p>version = 0.1.8</p>
+<p id="1234">  <p>
 
 </body>
 
-</head>
+</html>
