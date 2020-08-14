@@ -115,6 +115,31 @@ function test() {
 
 <p id="1234">  <p>
 
+  <p align="center" id="1234">	</p>
+    <h3 align="center">MTR	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/MTR_logo.svg/1265px-MTR_logo.svg.png" width="63.25" height="51.2">
+  </h3>
+    <h4 align="center">去
+  <select name="to" id="go to">
+    <option value=""></option>
+  　<option value="to荃灣">荃灣</option>
+  　<option value="to葵芳">葵芳</option>
+    <option value="to荔景">荔景</option>
+  </select>
+
+<button type="button" onclick="a()">Console</button>
+<script type="text/javascript">
+function a() {
+  var sel = document.getElementById("go to");
+  console.log( sel.value );
+  if (document.getElementById("go to").value=="to荔景" && 1==1) {
+    console.log( "Bingo" );
+  }
+}
+</script>
+  </h4>
+
+
+
 </body>
 
 </html>
